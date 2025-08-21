@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ORE GENIUS TUTORING</title>
 
-  <!-- Favicon: ensure favicon.png is at repo root -->
+  <!-- Favicon: put favicon.png at repo root -->
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
 
-  <!-- Icons -->
+  <!-- Font Awesome Icons (CDN safe for GitHub Pages) -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,6 +23,12 @@
     html{scroll-behavior:smooth}
     body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;margin:0;color:var(--text);background:var(--bg)}
     a{color:inherit}
+
+    /* Announcement bar */
+    .announce{background:var(--brand);color:#000;text-align:center;padding:.5rem 1rem;font-weight:600}
+    .announce a{color:#000;text-decoration:underline}
+
+    header{background:#000;color:var(--brand);padding:1.25rem;text-align:center}
 
     /* NAV */
     nav{background:#222;position:sticky;top:0;z-index:1000}
@@ -112,6 +121,14 @@
   </style>
 </head>
 <body>
+  <!-- Announcement bar -->
+  <div class="announce" role="status" aria-live="polite">
+    New semester special: first consultation is free. <a href="#contact">Book now</a>
+  </div>
+
+  <header>
+    <h1>Ore Genius Tutoring</h1>
+  </header>
 
   <!-- Navigation -->
   <nav aria-label="Primary">
@@ -320,8 +337,8 @@
   <section class="section" id="testimonials">
     <div class="container">
       <h2>Reviews</h2>
-      <!-- Elfsight Google Reviews -->
-      <script src="https://static.elfsight.com/platform/platform.js" async></script>
+      <!-- Elfsight Google Reviews (works on GitHub Pages) -->
+      <script src="https://static.elfsight.com/platform/platform.js"></script>
       <div class="elfsight-app-4612a642-2c71-45fd-8514-d9122fdd54fb" data-elfsight-app-lazy></div>
     </div>
   </section>
@@ -338,7 +355,7 @@
     <div class="container">
       <h2>Contact Us</h2>
       <div class="contact-info">
-        <p><a href="mailto:oregenius.info@gmail.com" rel="noopener noreferrer"><i class="fas fa-envelope" aria-hidden="true"></i> oregenius.info@gmail.com</a></p>
+        <p><a href="mailto:oregenius.info@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> oregenius.info@gmail.com</a></p>
         <p><a href="https://wa.me/27713876905" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a></p>
         <p><a href="https://www.linkedin.com/company/ore-genius-tutoring/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn Page</a></p>
       </div>
@@ -352,7 +369,7 @@
           <textarea name="message" rows="4" placeholder="Your Message / Specific Needs"></textarea>
           <button type="submit">Submit</button>
         </form>
-        <!-- NOTE: For a working form on GitHub Pages, use a service like Formspree or Netlify Forms -->
+        <!-- Tip: Use Formspree/Netlify Forms to make this submit on static hosting -->
       </div>
     </div>
   </section>
@@ -380,7 +397,7 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <a href="mailto:oregenius.info@gmail.com" rel="noopener noreferrer">Email</a>
+        <a href="mailto:oregenius.info@gmail.com">Email</a>
         <a href="https://wa.me/27713876905" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="https://www.linkedin.com/company/ore-genius-tutoring/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
@@ -391,7 +408,7 @@
   </footer>
 
   <script>
-    // Toggle mobile menu
+    // Toggle mobile menu (works on GitHub Pages)
     function toggleMenu(){
       const nav = document.getElementById('navLinks');
       const btn = document.querySelector('.hamburger');
