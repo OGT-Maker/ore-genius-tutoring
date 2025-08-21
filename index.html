@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ore Genius Tutoring (OGT)</title>
+  <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=view&id=1du9Vi3IR8lAISz860SnLRy6zhcupG1YE" />
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #fff; color: #000; }
+    header { background: #000; color: #ffde59; padding: 2rem; text-align: center; }
+    nav { background: #222; padding: 1rem 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
+    nav a { color: #ffde59; margin: 0 1.5rem; text-decoration: none; font-weight: bold; position: relative; }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: #ffde59; transition: width 0.3s; position: absolute; bottom: -5px; left: 0; }
+    nav a:hover::after { width: 100%; }
+    .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 6rem 2rem; background: #ffde59; text-align: center; }
+    .hero h2 { font-size: 2.8rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.3rem; margin-bottom: 2rem; max-width: 600px; }
+    .btn { background: #000; color: #ffde59; padding: 0.8rem 2rem; text-decoration: none; border-radius: 30px; font-weight: bold; transition: background 0.3s; }
+    .btn:hover { background: #333; }
+    .section { padding: 4rem 2rem; max-width: 1100px; margin: auto; }
+    .section h2 { font-size: 2rem; margin-bottom: 1rem; border-left: 5px solid #ffde59; padding-left: 1rem; }
+    .services-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .service-item { background: #f9f9f9; padding: 1.5rem; border-left: 5px solid #ffde59; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
+    .service-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+    .contact-info { font-size: 1.1rem; line-height: 1.8; }
+    .form-container { background: #f9f9f9; padding: 2rem; border-radius: 10px; margin-top: 2rem; }
+    .form-container input, .form-container textarea { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; }
+    .form-container button { background: #000; color: #ffde59; padding: 0.8rem 2rem; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; }
+    .form-container button:hover { background: #333; }
+    footer { text-align: center; padding: 1.5rem; background: #000; color: #ffde59; margin-top: 3rem; }
+    .tutors { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .tutor { background: #f9f9f9; padding: 1.5rem; border-radius: 10px; text-align: center; border-left: 5px solid #ffde59; }
+    .tutor h4 { margin-bottom: 0.5rem; }
+    .testimonials { background: #ffde59; padding: 3rem 2rem; border-radius: 10px; max-width: 900px; margin: 3rem auto; color: #000; font-style: italic; }
+    .testimonial { margin-bottom: 2rem; }
+    .faq { max-width: 900px; margin: 3rem auto; }
+    .faq-item { margin-bottom: 1rem; }
+    .faq-item summary { cursor: pointer; font-weight: bold; padding: 0.5rem 1rem; background: #f9f9f9; border-left: 5px solid #ffde59; border-radius: 5px; }
+    .faq-item p { padding: 0.5rem 1rem; margin: 0; background: #fff; border-radius: 0 0 5px 5px; border-left: 5px solid #ffde59; border-top: none; }
+    table { width: 100%; border-collapse: collapse; max-width: 600px; margin: auto; margin-top: 1rem; margin-bottom: 1rem; }
+    table th, table td { padding: 0.75rem; border: 1px solid #ddd; text-align: left; }
+    table thead tr { background: #ffde59; color: #000; }
+    @media (max-width: 768px) {
+      .services-list { grid-template-columns: 1fr; }
+      .pricing-plans { flex-direction: column; }
+      .tutors { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ore Genius Tutoring</h1>
+    <p>University-Level Tutoring Simplified</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#why">Why Choose Us</a>
+    <a href="#tutors">Tutors</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#bank-details">Bank Details</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Empowering Students for Academic Success</h2>
+    <p>We provide expert academic guidance, personalized tutoring, and course resources designed for South Africa's university students.</p>
+    <a href="#contact" class="btn">Book a Session</a>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>Ore Genius Tutoring (OGT) is a premium academic support platform specializing in Mining Engineering, Sciences, and Commerce. Our mission is to empower university students through individualized learning pathways, delivered by experienced tutors who understand the South African academic landscape.</p>
+  </section>
+
+  <section class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="services-list">
+      <div class="service-item"><h3>One-on-One Online Tutoring</h3><p>Customized tutoring sessions focusing on your course challenges to ensure deeper understanding and higher academic performance.</p></div>
+      <div class="service-item"><h3>Group Study Workshops</h3><p>Interactive sessions where students collaborate and learn under the guidance of expert tutors.</p></div>
+      <div class="service-item"><h3>Assignment & Exam Readiness</h3><p>Thorough preparation strategies, mock assessments, and support for assignment completion and exam success.</p></div>
+      <div class="service-item"><h3>On-Demand Video Tutorials</h3><p>Access an ever-growing library of course-specific tutorials, available exclusively to OGT students.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="why">
+    <h2>Why Choose Us</h2>
+    <ul>
+      <li>Experienced tutors with deep knowledge in university curricula</li>
+      <li>Personalized tutoring plans tailored to individual needs</li>
+      <li>Flexible online sessions to fit your schedule</li>
+      <li>Proven track record of improving academic performance</li>
+    </ul>
+  </section>
+
+  <section class="section" id="tutors">
+    <h2>Meet Our Tutors</h2>
+    <div class="tutors">
+      <div class="tutor"><h4>Aphiwe M.</h4><p>Mining Engineering Specialist with 5 years tutoring experience.</p></div>
+      <div class="tutor"><h4>Thando N.</h4><p>Expert in Chemistry and Science, passionate about student success.</p></div>
+      <div class="tutor"><h4>Lebogang K.</h4><p>Commerce and Economics tutor with strong academic background.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <h2>Pricing Plans</h2>
+    <table>
+      <thead>
+        <tr><th>Session Type</th><th>Rate</th><th>Duration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>One-on-One</td><td>R150 / hour</td><td>1 hour</td></tr>
+        <tr style="background: #f9f9f9;"><td>Group session</td><td>R120</td><td>2 hours</td></tr>
+        <tr><td>Monthly Package</td><td>R840</td><td>1.5 hours / week</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="bank-details">
+    <h2>Bank Details</h2>
+    <p><strong>Bank account holder:</strong> Ore Genius Tutoring</p>
+    <p><strong>Account number:</strong> 53003107135</p>
+    <p><strong>Bank name:</strong> TymeBank</p>
+    <p><strong>Bank code:</strong> 678910</p>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Students Say</h2>
+    <div class="testimonial"><p>“Thanks to OGT, I improved my Mining Engineering grades significantly!” – Sipho M.</p></div>
+    <div class="testimonial"><p>“The tutors are very knowledgeable and approachable.” – Naledi T.</p></div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <details class="faq-item"><summary>How do I book a tutoring session?</summary><p>You can fill out the contact form below or email us directly to schedule your sessions.</p></details>
+    <details class="faq-item"><summary>What subjects do you cover?</summary><p>We specialize in Mining Engineering, Sciences, Commerce, and related university courses.</p></details>
+    <details class="faq-item"><summary>Do you offer group sessions?</summary><p>Yes, we offer both one-on-one and group workshops.</p></details>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:info@oregenius.co.za">info@oregenius.co.za</a></p>
+      <p>WhatsApp: <a href="https://wa.me/27123456789">+27 123 456 789</a></p>
+      <p>Social Media: <em>Coming Soon</em></p>
+    </div>
+    <div class="form-container">
+      <h3>Book a Tutoring Session</h3>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="subject" placeholder="Subject / Course" required />
+        <textarea name="message" rows="4" placeholder="Your Message / Specific Needs"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ore Genius Tutoring. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
