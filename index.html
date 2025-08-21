@@ -5,47 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ORE GENIUS TUTORING</title>
 
-  <!-- Favicon -->
+  <!-- Favicon (place favicon.png at repo root) -->
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
 
-  <!-- Icons -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome Icons (CDN safe for GitHub Pages) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
   <style>
     :root{
       --brand:#ffde59;
       --bg:#ffffff;
       --text:#000000;
-      --navH:88px; /* sticky nav height for scroll offset */
+      --navH:88px; /* sticky nav height used for scroll offset */
     }
+
     html{scroll-behavior:smooth}
     body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;margin:0;color:var(--text);background:var(--bg)}
     a{color:inherit;text-decoration:none}
 
-    /* Ensure anchors stop below sticky nav */
+    /* Make anchor targets stop below the sticky nav */
     .hero, section[id]{scroll-margin-top:var(--navH)}
 
-    /* NAV (pure black) */
+    /* ===== NAV (PURE BLACK) ===== */
     nav{background:#000;position:sticky;top:0;z-index:1000}
-    .nav-container{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:56px;padding:0.4rem 1rem}
-    .logo img{width:120px;height:120px;object-fit:contain;display:block}
+    .nav-container{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:1rem;min-height:56px;padding:0.4rem 1rem
+    }
+    .logo img{width:200px;height:200px;object-fit:contain;display:block}
     .nav-links{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:.75rem}
     nav a.link{color:var(--brand);font-weight:700;position:relative;margin:0 .4rem;padding:.25rem .15rem}
     nav a.link::after{content:'';display:block;width:0;height:2px;background:var(--brand);transition:width .25s;position:absolute;bottom:-6px;left:0}
     nav a.link:hover::after{width:100%}
-    nav a.link.active{outline:none}
     nav a.link.active::after{width:100%}
     .cta-nav{background:var(--brand);color:#000;border:none;border-radius:999px;padding:.55rem 1rem;font-weight:800;cursor:pointer}
     .cta-nav:hover{filter:brightness(.92)}
-    .hamburger{display:none;font-size:1.9rem;color:var(--brand);cursor:pointer;line-height:1;background:none;border:0}
+    .hamburger{
+      display:none;font-size:1.9rem;color:var(--brand);cursor:pointer;line-height:1;
+      background:none;border:0
+    }
 
-    /* Collapse */
+    /* Collapse for tablets/phones */
     @media (max-width:1024px){
-      :root{ --navH:72px; } /* slightly smaller offset on tablets/phones */
+      :root{ --navH:72px; }
       .hamburger{display:block}
-      .nav-links{display:none;flex-direction:column;align-items:center;background:#000;width:100%;padding:.5rem 0 1rem}
+      .nav-links{
+        display:none;flex-direction:column;align-items:center;background:#000;width:100%;padding:.5rem 0 1rem
+      }
       .nav-links.show{display:flex}
       nav a.link{margin:.55rem 0;display:block}
       .logo img{width:160px;height:160px}
@@ -55,8 +66,11 @@
       .logo img{width:140px;height:140px}
     }
 
-    /* HERO */
-    .hero{display:grid;place-items:center;padding:4.5rem 1.25rem;background:var(--brand);text-align:center;opacity:0;transform:scale(.98);transition:opacity .7s ease, transform .7s ease}
+    /* ===== HERO ===== */
+    .hero{
+      display:grid;place-items:center;padding:4.5rem 1.25rem;background:var(--brand);
+      text-align:center;opacity:0;transform:scale(.98);transition:opacity .7s ease, transform .7s ease
+    }
     .hero.show{opacity:1;transform:scale(1)}
     .hero h1{font-size:2.2rem;margin:.25rem 0 1rem}
     .hero p{max-width:760px;margin:0 auto 1.5rem;font-size:1.1rem}
@@ -67,11 +81,11 @@
     .btn-light{background:#fff;color:#000;border:2px solid #000;transition:transform .2s ease}
     .btn-light:hover{transform:translateY(-2px)}
 
-    /* Sections */
+    /* ===== SECTIONS / LAYOUT ===== */
     .section{padding:4rem 1.25rem}
     .container{max-width:1100px;margin:0 auto}
 
-    /* Scroll reveal base */
+    /* Scroll reveal */
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
     .reveal.show{opacity:1;transform:translateY(0)}
 
@@ -82,22 +96,21 @@
     .logo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1rem;align-items:center;justify-items:center}
     .logo-chip{background:#fff;border:1px solid #eee;border-radius:10px;padding:.6rem .8rem;font-weight:700}
 
-    /* Features / cards */
+    /* Feature/step cards */
     .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.25rem}
     .feature{background:#f9f9f9;border-left:5px solid var(--brand);padding:1.25rem;border-radius:10px;box-shadow:0 5px 10px rgba(0,0,0,.05)}
 
-    /* Steps */
     .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:1.25rem}
     .step{border:1px solid #eee;border-radius:12px;padding:1.25rem;background:#fff}
     .step .num{width:34px;height:34px;border-radius:50%;background:#000;color:var(--brand);display:inline-grid;place-items:center;font-weight:900;margin-bottom:.5rem}
 
-    /* Subjects strip */
+    /* Subject chips */
     .integrations{background:#111;color:#fff}
     .integrations h2{color:var(--brand)}
     .integrations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-top:1rem}
     .integration-chip{border:1px solid #333;border-radius:12px;padding:.9rem .8rem;background:#000;text-align:center}
 
-    /* Use cases / pricing cards */
+    /* Cards (use cases / pricing) */
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem;margin-top:1.25rem}
     .card{background:#f9f9f9;border-left:5px solid var(--brand);padding:1.25rem;border-radius:10px;box-shadow:0 5px 10px rgba(0,0,0,.05)}
 
@@ -123,11 +136,11 @@
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- ===== NAVIGATION ===== -->
   <nav aria-label="Primary">
     <div class="nav-container">
       <a class="logo" href="#hero" aria-label="Home">
-        <img src="logo.png" alt="Ore Genius Tutoring logo">
+        <img src="logo.png" alt="Ore Genius Tutoring logo" />
       </a>
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleMenu()">&#9776;</button>
       <div class="nav-links" id="navLinks">
@@ -145,7 +158,7 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
     <h1>University tutoring that feels like a productivity workflow</h1>
     <p>Personalised one-on-one and group sessions for Mining, Sciences, and Commerce — with resources and a clear step-by-step path to ace your modules.</p>
@@ -155,7 +168,7 @@
     </div>
   </section>
 
-  <!-- Social proof -->
+  <!-- ===== SOCIAL PROOF ===== -->
   <div class="social-proof reveal">
     <div class="bar">
       <h3>Trusted by students from</h3>
@@ -166,7 +179,7 @@
     </div>
   </div>
 
-  <!-- About -->
+  <!-- ===== ABOUT ===== -->
   <section class="section reveal" id="about">
     <div class="container">
       <h2>About OGT</h2>
@@ -174,7 +187,7 @@
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- ===== SERVICES ===== -->
   <section class="section reveal" id="services">
     <div class="container">
       <h2>What you get</h2>
@@ -189,7 +202,7 @@
     </div>
   </section>
 
-  <!-- Why choose us -->
+  <!-- ===== WHY US ===== -->
   <section class="section reveal" id="why">
     <div class="container">
       <h2>Why students choose OGT</h2>
@@ -201,7 +214,7 @@
     </div>
   </section>
 
-  <!-- How it works -->
+  <!-- ===== HOW IT WORKS ===== -->
   <section class="section reveal" id="how">
     <div class="container">
       <h2>How it works</h2>
@@ -213,7 +226,7 @@
     </div>
   </section>
 
-  <!-- Subjects -->
+  <!-- ===== SUBJECTS ===== -->
   <section class="section integrations reveal" id="subjects">
     <div class="container">
       <h2>Subjects we cover</h2>
@@ -227,7 +240,7 @@
     </div>
   </section>
 
-  <!-- Use cases -->
+  <!-- ===== USE CASES ===== -->
   <section class="section reveal" id="use-cases">
     <div class="container">
       <h2>Use cases</h2>
@@ -239,7 +252,7 @@
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- ===== PRICING ===== -->
   <section class="section reveal" id="pricing">
     <div class="container">
       <h2>Pricing</h2>
@@ -251,7 +264,7 @@
     </div>
   </section>
 
-  <!-- Bank details -->
+  <!-- ===== BANK DETAILS ===== -->
   <section class="section reveal" id="bank-details">
     <div class="container">
       <h2>Bank Details</h2>
@@ -262,24 +275,24 @@
     </div>
   </section>
 
-  <!-- Testimonials / Reviews -->
+  <!-- ===== TESTIMONIALS / REVIEWS ===== -->
   <section class="section reveal" id="testimonials">
     <div class="container">
       <h2>Reviews</h2>
-      <!-- Elfsight Google Reviews -->
+      <!-- Elfsight Google Reviews (loads on GitHub Pages) -->
       <script src="https://static.elfsight.com/platform/platform.js" async></script>
       <div class="elfsight-app-4612a642-2c71-45fd-8514-d9122fdd54fb" data-elfsight-app-lazy></div>
     </div>
   </section>
 
-  <!-- Final CTA -->
+  <!-- ===== FINAL CTA ===== -->
   <section class="final-cta reveal" aria-label="Get started">
     <h2>Ready to polish your grades?</h2>
     <p>Book a free consultation and get a plan for your next exam or assignment.</p>
     <a href="#contact" class="btn btn-light">Get Started</a>
   </section>
 
-  <!-- Contact -->
+  <!-- ===== CONTACT ===== -->
   <section class="section reveal" id="contact">
     <div class="container">
       <h2>Contact Us</h2>
@@ -298,11 +311,12 @@
           <textarea name="message" rows="4" placeholder="Your Message / Specific Needs"></textarea>
           <button type="submit">Submit</button>
         </form>
+        <!-- Tip: For real submissions on GitHub Pages, integrate Formspree/Netlify Forms -->
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-top" aria-label="Footer navigation">
       <div>
@@ -342,7 +356,7 @@
       if(btn){ btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
     }
 
-    // Smooth scroll that accounts for sticky nav + close mobile menu
+    // Smooth scroll + close mobile menu after click
     function wireSmoothScroll(){
       const allLinks = document.querySelectorAll('.nav-links a, .cta-nav, .logo[href^="#"]');
       allLinks.forEach(a=>{
@@ -360,12 +374,13 @@
       });
     }
 
-    // Scroll reveal & active link
+    // Scroll reveal & active link highlighting
     function initInteractivity(){
-      // Hero
-      document.querySelector('.hero')?.classList.add('show');
+      // Hero animation
+      const hero = document.querySelector('.hero');
+      if(hero) hero.classList.add('show');
 
-      // Reveal sections
+      // Reveal on scroll
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if(entry.isIntersecting){
@@ -376,10 +391,11 @@
       }, {threshold: 0.15});
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // Active nav link highlight
+      // Active nav link on scroll
       const sections = Array.from(document.querySelectorAll('section[id]'));
       const links = Array.from(document.querySelectorAll('.nav-links a.link'));
       const byId = id => links.find(a => a.getAttribute('href') === '#' + id);
+
       const spy = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const link = byId(entry.target.id);
@@ -393,6 +409,7 @@
       sections.forEach(s => spy.observe(s));
     }
 
+    // Init
     window.addEventListener('DOMContentLoaded', () => {
       initInteractivity();
       wireSmoothScroll();
