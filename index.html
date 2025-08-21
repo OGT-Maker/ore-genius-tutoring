@@ -4,424 +4,134 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ORE GENIUS TUTORING</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 
-  <!-- Favicon: put favicon.png at repo root -->
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
-
-  <!-- Font Awesome Icons (CDN safe for GitHub Pages) -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    :root{
-      --brand:#ffde59;
-      --bg:#ffffff;
-      --text:#000000;
-      --ink:#222222;
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #fff; color: #000; overflow-x: hidden; }
+
+    /* --- NAVIGATION --- */
+    nav { background: #000000; position: sticky; top: 0; z-index: 1000; }
+    .nav-container {
+      display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem;
     }
-    html{scroll-behavior:smooth}
-    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;margin:0;color:var(--text);background:var(--bg)}
-    a{color:inherit}
+    .logo img { height: 74px; } /* 64px favicon +10px = 74px */
+    .hamburger { display: none; font-size: 2rem; color: #ffde59; cursor: pointer; }
+    .nav-links { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    nav a { color: #ffde59; text-decoration: none; font-weight: bold; position: relative; margin: 0 .75rem; }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: #ffde59; transition: width 0.3s; position: absolute; bottom: -5px; left: 0; }
+    nav a:hover::after { width: 100%; }
 
-    /* Announcement bar */
-    .announce{background:var(--brand);color:#000;text-align:center;padding:.5rem 1rem;font-weight:600}
-    .announce a{color:#000;text-decoration:underline}
-
-    header{background:#000;color:var(--brand);padding:1.25rem;text-align:center}
-
-    /* NAV */
-    nav{background:#222;position:sticky;top:0;z-index:1000}
-    .nav-container{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:56px;padding:0 1rem}
-    .logo{font-size:1.1rem;color:var(--brand);font-weight:800;letter-spacing:.5px}
-    .nav-links{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:.75rem}
-    nav a.link{color:var(--brand);text-decoration:none;font-weight:700;position:relative;margin:0 .4rem}
-    nav a.link::after{content:'';display:block;width:0;height:2px;background:var(--brand);transition:width .25s;position:absolute;bottom:-6px;left:0}
-    nav a.link:hover::after{width:100%}
-    .cta-nav{background:var(--brand);color:#000;border:none;border-radius:999px;padding:.55rem 1rem;font-weight:800;cursor:pointer}
-    .cta-nav:hover{filter:brightness(.92)}
-    .hamburger{display:none;font-size:1.9rem;color:var(--brand);cursor:pointer;line-height:1}
-
-    /* Collapse up to tablets */
-    @media (max-width:1024px){
-      .hamburger{display:block}
-      .nav-links{display:none;flex-direction:column;align-items:center;background:#222;width:100%;padding:.5rem 0 1rem}
-      .nav-links.show{display:flex}
-      nav a.link{margin:.55rem 0;display:block}
+    /* Collapse on tablets & phones */
+    @media (max-width: 1024px) {
+      .hamburger { display: block; }
+      .nav-links {
+        display: none; flex-direction: column; align-items: center; background: #000000; width: 100%; padding: .5rem 0;
+      }
+      .nav-links.show { display: flex; }
+      nav a { margin: .6rem 0; display: block; }
     }
-    @media (max-width:420px){
-      nav a.link{font-size:.95rem}
+    @media (max-width: 420px) {
+      nav a { font-size: 0.95rem; }
     }
 
-    /* HERO */
-    .hero{display:grid;place-items:center;padding:4.5rem 1.25rem;background:var(--brand);text-align:center}
-    .hero h1{font-size:2.2rem;margin:.25rem 0 1rem}
-    .hero p{max-width:760px;margin:0 auto 1.5rem;font-size:1.1rem}
-    .hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
-    .btn{display:inline-block;border-radius:999px;padding:.9rem 1.25rem;font-weight:800;text-decoration:none}
-    .btn-dark{background:#000;color:var(--brand)}
-    .btn-dark:hover{filter:brightness(1.1)}
-    .btn-light{background:#fff;color:#000;border:2px solid #000}
-    .btn-light:hover{background:#f7f7f7}
+    /* --- HERO --- */
+    .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 6rem 2rem; background: #ffde59; text-align: center; transition: clip-path 1s ease-in-out; clip-path: circle(0% at 50% 50%); }
+    .hero.show { clip-path: circle(150% at 50% 50%); }
+    .hero h2 { font-size: 2.8rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.3rem; margin-bottom: 2rem; max-width: 600px; }
+    .btn { background: #000; color: #ffde59; padding: 0.8rem 2rem; text-decoration: none; border-radius: 30px; font-weight: bold; transition: transform 0.4s ease, background 0.3s; display: inline-block; }
+    .btn:hover { background: #333; transform: scale(1.1) rotate(2deg); }
 
-    /* Social proof */
-    .social-proof{padding:1.25rem}
-    .social-proof .bar{max-width:1100px;margin:0 auto;background:#f6f6f6;border:1px solid #eee;border-radius:12px;padding:1rem}
-    .social-proof h3{margin:.25rem 0 1rem;text-align:center;font-size:1rem;color:#333}
-    .logo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1rem;align-items:center;justify-items:center}
-    .logo-chip{background:#fff;border:1px solid #eee;border-radius:10px;padding:.6rem .8rem;font-weight:700}
+    /* --- GENERAL SECTIONS --- */
+    .section { padding: 4rem 2rem; max-width: 1100px; margin: auto; transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; opacity: 0; transform: translateY(20px); }
+    .section.show { opacity: 1; transform: translateY(0); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .card { background: #f9f9f9; border-left: 5px solid #ffde59; padding: 1.5rem; border-radius: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+    .card:hover { transform: translateY(-5px); }
 
-    /* Sections */
-    .section{padding:4rem 1.25rem}
-    .container{max-width:1100px;margin:0 auto}
+    /* --- CONTACT --- */
+    .contact-info a { display: inline-flex; align-items: center; color: #000; text-decoration: none; margin-bottom: 0.5rem; }
+    .contact-info a i { margin-right: 0.5rem; font-size: 1.2rem; }
+    .form-container { background: #f9f9f9; padding: 2rem; border-radius: 10px; margin-top: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .form-container input, .form-container textarea { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; }
+    .form-container button { background: #000; color: #ffde59; padding: 0.8rem 2rem; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: transform 0.4s ease, background 0.3s; }
+    .form-container button:hover { background: #333; transform: scale(1.1) rotate(-2deg); }
 
-    /* Features (benefits) */
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.25rem}
-    .feature{background:#f9f9f9;border-left:5px solid var(--brand);padding:1.25rem;border-radius:10px;box-shadow:0 5px 10px rgba(0,0,0,.05)}
-    .feature h3{margin:.25rem 0 .5rem}
+    /* --- FOOTER --- */
+    footer { text-align: center; padding: 1.5rem; background: #000; color: #ffde59; margin-top: 3rem; }
 
-    /* How it works */
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:1.25rem}
-    .step{border:1px solid #eee;border-radius:12px;padding:1.25rem;background:#fff}
-    .step .num{width:34px;height:34px;border-radius:50%;background:#000;color:var(--brand);display:inline-grid;place-items:center;font-weight:900;margin-bottom:.5rem}
+    /* --- TESTIMONIALS --- */
+    .testimonial-box { background: #ffde59; padding: 2rem; border-radius: 10px; margin-top: 2rem; color: #000; font-style: italic; }
 
-    /* Subjects strip */
-    .integrations{background:#111;color:#fff}
-    .integrations h2{color:var(--brand)}
-    .integrations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-top:1rem}
-    .integration-chip{border:1px solid #333;border-radius:12px;padding:.9rem .8rem;background:#000;text-align:center}
-
-    /* Use cases */
-    .usecases{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:1.25rem}
-    .usecase{background:#f9f9f9;border-left:5px solid var(--brand);padding:1.25rem;border-radius:10px}
-
-    /* Pricing */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem;margin-top:1.25rem}
-    .card{background:#f9f9f9;border-left:5px solid var(--brand);padding:1.25rem;border-radius:10px;box-shadow:0 5px 10px rgba(0,0,0,.05)}
-    .card h3{margin-top:.25rem}
-
-    /* Final CTA */
-    .final-cta{background:#000;color:var(--brand);text-align:center;padding:3rem 1rem}
-    .final-cta .btn{margin-top:1rem}
-
-    /* Contact */
-    .contact-info a{display:inline-flex;align-items:center;color:#000;text-decoration:none;margin-bottom:.5rem}
-    .contact-info a i{margin-right:.5rem;font-size:1.2rem}
-    .form-container{background:#f9f9f9;padding:2rem;border-radius:10px;margin-top:1.25rem;box-shadow:0 5px 15px rgba(0,0,0,.1)}
-    .form-container input,.form-container textarea{width:100%;padding:.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:5px}
-    .form-container button{background:#000;color:var(--brand);padding:.8rem 2rem;border:none;border-radius:30px;font-weight:800;cursor:pointer}
-    .form-container button:hover{filter:brightness(1.1)}
-
-    /* Footer */
-    footer{background:#000;color:var(--brand)}
-    .footer-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;padding:2.2rem 1.25rem;max-width:1100px;margin:0 auto}
-    .footer-top h4{margin:.2rem 0 .8rem}
-    .footer-top a{color:var(--brand);text-decoration:none;display:block;margin:.3rem 0}
-    .footer-bottom{text-align:center;border-top:1px solid #222;padding:1rem;color:#ffd84a}
+    /* --- FAQ --- */
+    .faq-item summary { cursor: pointer; font-weight: bold; padding: 0.5rem 1rem; background: #f9f9f9; border-left: 5px solid #ffde59; border-radius: 5px; }
+    .faq-item p { padding: 0.5rem 1rem; margin: 0; background: #fff; border-radius: 0 0 5px 5px; border-left: 5px solid #ffde59; border-top: none; }
   </style>
 </head>
 <body>
-  <!-- Announcement bar -->
-  <div class="announce" role="status" aria-live="polite">
-    New semester special: first consultation is free. <a href="#contact">Book now</a>
-  </div>
 
-  <header>
-    <h1>Ore Genius Tutoring</h1>
-  </header>
-
-  <!-- Navigation -->
-  <nav aria-label="Primary">
+  <!-- NAVIGATION -->
+  <nav>
     <div class="nav-container">
-      <div class="logo" aria-label="OGT logo">OGT</div>
-      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleMenu()">&#9776;</button>
+      <div class="logo">
+        <img src="logo.png" alt="Ore Genius Logo">
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
       <div class="nav-links" id="navLinks">
-        <a class="link" href="#about">About</a>
-        <a class="link" href="#services">Services</a>
-        <a class="link" href="#why">Why Us</a>
-        <a class="link" href="#how">How It Works</a>
-        <a class="link" href="#subjects">Subjects</a>
-        <a class="link" href="#use-cases">Use Cases</a>
-        <a class="link" href="#pricing">Pricing</a>
-        <a class="link" href="#testimonials">Reviews</a>
-        <a class="link" href="#contact">Contact</a>
-        <a class="cta-nav" href="#contact">Get Started</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#tutors">Tutors</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#bank-details">Bank Details</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <h1>University tutoring that feels like a productivity workflow</h1>
-    <p>Personalised one-on-one and group sessions for Mining, Sciences, and Commerce — with resources and a clear step-by-step path to ace your modules.</p>
-    <div class="hero-ctas">
-      <a href="#contact" class="btn btn-dark">Book a Session</a>
-      <a href="#pricing" class="btn btn-light">See Pricing</a>
-    </div>
+    <h2>"Polishing Minds Like Rare Gems"</h2>
+    <p>We provide expert academic guidance, personalized tutoring, and course resources designed for South Africa's university students.</p>
+    <a href="#contact" class="btn">Book a Session</a>
   </section>
 
-  <!-- Social proof -->
-  <div class="social-proof">
-    <div class="bar">
-      <h3>Trusted by students from</h3>
-      <div class="logo-row" aria-label="Universities">
-        <div class="logo-chip">Wits</div>
-        <div class="logo-chip">UP</div>
-        <div class="logo-chip">UJ</div>
-        <div class="logo-chip">UCT</div>
-        <div class="logo-chip">NWU</div>
-        <div class="logo-chip">CUT</div>
-      </div>
-    </div>
-  </div>
+  <!-- REST OF YOUR CONTENT (About, Services, Tutors, Pricing, etc.) -->
 
-  <!-- About -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2>About OGT</h2>
-      <p>We simplify complex topics with clear methods, tested resources, and focused practice. Sessions are tailored to your goals and schedule — online or in person.</p>
-    </div>
-  </section>
-
-  <!-- Benefits / Features -->
-  <section class="section" id="services">
-    <div class="container">
-      <h2>What you get</h2>
-      <div class="features">
-        <div class="feature">
-          <h3>One-on-One Tutoring</h3>
-          <p>Targeted help on your toughest concepts with a personalised study plan.</p>
-        </div>
-        <div class="feature">
-          <h3>Group Sessions</h3>
-          <p>Peer learning, exam-style drills, and collaborative problem-solving.</p>
-        </div>
-        <div class="feature">
-          <h3>Pre-recorded Lessons</h3>
-          <p>Concise videos and worked examples for revision at your pace.</p>
-        </div>
-        <div class="feature">
-          <h3>Resources & Past Papers</h3>
-          <p>Curated notes, step-by-step solutions, and timed practice sets.</p>
-        </div>
-        <div class="feature">
-          <h3>Progress Tracking</h3>
-          <p>Milestones and feedback so you always know what to revise next.</p>
-        </div>
-        <div class="feature">
-          <h3>Flexible Scheduling</h3>
-          <p>Evenings and weekends available. Online or campus-adjacent.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why choose us -->
-  <section class="section" id="why">
-    <div class="container">
-      <h2>Why students choose OGT</h2>
-      <div class="features">
-        <div class="feature">
-          <h3>Expert Head Tutors</h3>
-          <p>Top performers with practical experience in Mining, Commerce and Sciences.</p>
-        </div>
-        <div class="feature">
-          <h3>Clear Methods</h3>
-          <p>We teach repeatable frameworks, not just answers — so it sticks in exams.</p>
-        </div>
-        <div class="feature">
-          <h3>Result-driven</h3>
-          <p>Each session closes with next steps and targeted practice to improve marks.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="section" id="how">
-    <div class="container">
-      <h2>How it works</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="num">1</div>
-          <h3>Tell us your modules</h3>
-          <p>Share problem areas and upcoming due dates so we can scope your plan.</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h3>We build your plan</h3>
-          <p>Mix of one-on-one, group drills, and resources mapped to your goals.</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h3>Track & improve</h3>
-          <p>Short check-ins, timed practice, and progress reviews before exams.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Subjects -->
-  <section class="section integrations" id="subjects">
-    <div class="container">
-      <h2>Subjects we cover</h2>
-      <div class="integrations-grid">
-        <div class="integration-chip">Mine Ventilation</div>
-        <div class="integration-chip">Robotics</div>
-        <div class="integration-chip">Surpac</div>
-        <div class="integration-chip">Physics</div>
-        <div class="integration-chip">Chemistry</div>
-        <div class="integration-chip">Calculus</div>
-        <div class="integration-chip">Accounting</div>
-        <div class="integration-chip">Economics</div>
-        <div class="integration-chip">Statistics</div>
-        <div class="integration-chip">Operations</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Use cases -->
-  <section class="section" id="use-cases">
-    <div class="container">
-      <h2>Use cases</h2>
-      <div class="usecases">
-        <div class="usecase">
-          <h3>Exam Prep Sprint</h3>
-          <p>2–4 week intensive: concept refreshers, past papers, and error-fix loops.</p>
-        </div>
-        <div class="usecase">
-          <h3>Assignment Rescue</h3>
-          <p>Focused sessions to unblock tough problems and structure clear solutions.</p>
-        </div>
-        <div class="usecase">
-          <h3>Foundation Builder</h3>
-          <p>Bridge knowledge gaps early so later modules feel straightforward.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section class="section" id="pricing">
-    <div class="container">
-      <h2>Pricing</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>One-on-One</h3>
-          <p><strong>R150</strong> per hour</p>
-        </div>
-        <div class="card">
-          <h3>Group Session</h3>
-          <p><strong>R120</strong> for 2 hours</p>
-        </div>
-        <div class="card">
-          <h3>Monthly Package</h3>
-          <p><strong>R840</strong> for 1.5 hours/week</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bank details -->
-  <section class="section" id="bank-details">
-    <div class="container">
-      <h2>Bank Details</h2>
-      <p><strong>Account Holder:</strong> Ore Genius Tutoring</p>
-      <p><strong>Account Number:</strong> 53003107135</p>
-      <p><strong>Bank Name:</strong> TymeBank</p>
-      <p><strong>Bank Code:</strong> 678910</p>
-    </div>
-  </section>
-
-  <!-- Testimonials / Reviews -->
-  <section class="section" id="testimonials">
-    <div class="container">
-      <h2>Reviews</h2>
-      <!-- Elfsight Google Reviews (works on GitHub Pages) -->
-      <script src="https://static.elfsight.com/platform/platform.js"></script>
-      <div class="elfsight-app-4612a642-2c71-45fd-8514-d9122fdd54fb" data-elfsight-app-lazy></div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="final-cta" aria-label="Get started">
-    <h2>Ready to polish your grades?</h2>
-    <p>Book a free consultation and get a plan for your next exam or assignment.</p>
-    <a href="#contact" class="btn btn-light">Get Started</a>
-  </section>
-
-  <!-- Contact -->
-  <section class="section" id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <div class="contact-info">
-        <p><a href="mailto:oregenius.info@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> oregenius.info@gmail.com</a></p>
-        <p><a href="https://wa.me/27713876905" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a></p>
-        <p><a href="https://www.linkedin.com/company/ore-genius-tutoring/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn Page</a></p>
-      </div>
-
-      <div class="form-container">
-        <h3>Book a Tutoring Session</h3>
-        <form action="#" method="POST" aria-label="Booking form">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Student Email" required />
-          <input type="text" name="subject" placeholder="Subject / Course" required />
-          <textarea name="message" rows="4" placeholder="Your Message / Specific Needs"></textarea>
-          <button type="submit">Submit</button>
-        </form>
-        <!-- Tip: Use Formspree/Netlify Forms to make this submit on static hosting -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <div class="footer-top" aria-label="Footer navigation">
-      <div>
-        <h4>OGT</h4>
-        <a href="#about">About</a>
-        <a href="#why">Why Us</a>
-        <a href="#how">How It Works</a>
-      </div>
-      <div>
-        <h4>Subjects</h4>
-        <a href="#subjects">Mining</a>
-        <a href="#subjects">Sciences</a>
-        <a href="#subjects">Commerce</a>
-      </div>
-      <div>
-        <h4>Resources</h4>
-        <a href="#use-cases">Use Cases</a>
-        <a href="#testimonials">Reviews</a>
-        <a href="#pricing">Pricing</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="mailto:oregenius.info@gmail.com">Email</a>
-        <a href="https://wa.me/27713876905" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a href="https://www.linkedin.com/company/ore-genius-tutoring/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2025 Ore Genius Tutoring. All rights reserved.
-    </div>
+    <p>&copy; 2025 Ore Genius Tutoring. All Rights Reserved.</p>
   </footer>
 
   <script>
-    // Toggle mobile menu (works on GitHub Pages)
-    function toggleMenu(){
-      const nav = document.getElementById('navLinks');
-      const btn = document.querySelector('.hamburger');
-      const isOpen = nav.classList.toggle('show');
-      if(btn){ btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
-    }
-
-    // Close menu after selecting a link (mobile UX)
     window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('#navLinks a').forEach(a=>{
-        a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('show'));
+      document.getElementById('hero').classList.add('show');
+      const sections = document.querySelectorAll('.section');
+      const revealOnScroll = () => {
+        const triggerPoint = window.innerHeight / 1.2;
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop < triggerPoint) section.classList.add('show');
+        });
+      };
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
+
+      // Close mobile menu when link is clicked
+      const navLinks = document.querySelectorAll('#navLinks a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('navLinks').classList.remove('show');
+        });
       });
     });
+
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
   </script>
 </body>
 </html>
